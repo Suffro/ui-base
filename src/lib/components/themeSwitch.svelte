@@ -14,6 +14,7 @@
             console.error(error);
         }
     }
+    
 </script>
 
 <button title="Theme" on:click={switchTheme} class="text-base-content/70 flex justify-start items-center gap-2 h-fit w-full hover:text-base-content rounded-md p-2 text-sm font-semibold">
@@ -33,8 +34,7 @@
             </svg>
             {/if}         
         </div>
-        {/if}
-        {#if $theme===LIGHT_THEME}
+        {:else}
         <!--Sun-->
         <div class="text-inherit">
             {#if outline}
@@ -53,7 +53,7 @@
     </div>
     {#if !hideLabel}
     <div>
-        {$theme?($theme===LIGHT_THEME?"Light mode":"Dark mode"):""}
+        {$theme?($theme===LIGHT_THEME?"Light mode":"Dark mode"):"Light mode"}
     </div>
     {/if}
 </button>

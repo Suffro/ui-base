@@ -1,30 +1,10 @@
 <script>
-	import ThemeSwitch from "../themeSwitch.svelte";
-import ProfileDropdown from "./components/profileDropdown.svelte";
-
+	import { LIGHT_THEME } from "$lib/globals/theme";
+  import ThemeSwitch from "../themeSwitch.svelte";
+  import ProfileDropdown from "./components/profileDropdown.svelte";
+	import theme from "$lib/stores/theme";
 </script>
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<!--
-  This example requires updating your template:
 
-  ```
-  <html class="h-full bg-base-200">
-  <body class="h-full">
-  ```
--->
 <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     <div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
@@ -74,7 +54,7 @@ import ProfileDropdown from "./components/profileDropdown.svelte";
           <!-- Sidebar component, swap this element with another sidebar if you like -->
           <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-base-200 px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=sky&shade=100" alt="Your Company">
             </div>
             <nav class="flex flex-1 flex-col">
               <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -177,7 +157,7 @@ import ProfileDropdown from "./components/profileDropdown.svelte";
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex grow flex-col gap-y-5 overflow-y-auto -r  bg-base-200 px-6 pb-4">
         <div class="flex h-16 shrink-0 items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=gray&shade={$theme===LIGHT_THEME?"800":"200"}" alt="Your Company">
         </div>
         <nav class="flex flex-1 flex-col">
           <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -294,7 +274,7 @@ import ProfileDropdown from "./components/profileDropdown.svelte";
             <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-base-content/70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
             </svg>
-            <input id="search-field" class="block bg-transparent h-full w-full -0 py-0 pl-8 pr-0 text-base-content/70 placeholder:text-base-content/70 focus:-0 focus:outline-0 focus:ring-0 sm:text-sm" placeholder="Search..." type="search" name="search">
+            <input id="search-field" class="block bg-transparent h-full w-full -0 py-0 pl-8 pr-0 text-base-content/70 placeholder:text-base-content/70 border-0 outline-0 ring-0 focus:-0 focus:outline-0 focus:ring-0 sm:text-sm" placeholder="Search..." type="search" name="search">
           </form>
           <div class="flex items-center gap-x-4 lg:gap-x-6">
             <button type="button" class="-m-2.5 p-2.5 text-base-content/70 hover:text-base-content/70">

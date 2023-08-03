@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require('@tailwindcss/forms'),require("daisyui")],
   daisyui: {
     themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
     base: true, // applies background color and foreground color for root element by default

@@ -3,7 +3,7 @@
 	import '../app.css'
 	import { invalidate } from '$app/navigation'
 	import { onMount, setContext } from 'svelte'
-	import { user } from '$lib/stores/auth';
+	import { authSession } from '$lib/stores/auth';
 	import Shell from '$lib/components/shell/shell.svelte';
 	import { initTheme } from '$lib/globals/theme';
 	import theme from '$lib/stores/theme';
@@ -12,7 +12,7 @@
 
 	let { supabase, session, profile } = data
 	$: ({ supabase, session, profile } = data)
-	$: user.set(profile);
+	$: authSession.set({session:session||{},profile:profile||{},supabase});
 	onMount(() => {
 		initTheme();
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -20,7 +20,7 @@
 				invalidate('supabase:auth')
 			}
 		})
-
+		console.log($authSession);
 		return () => data.subscription.unsubscribe()
 	})
 </script>
